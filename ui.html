@@ -88,11 +88,17 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
             <button class="text-left" onclick="goHome()">
                 <p class="text-sm tracking-[0.2em] uppercase text-orange-700 mono">Nexus Cyberdesk</p>
-                <h1 class="text-2xl md:text-4xl font-bold leading-tight">Emergency Fraud Helpdesk</h1>
+                <h1 id="titleText" class="text-2xl md:text-4xl font-bold leading-tight">Emergency Fraud Helpdesk</h1>
             </button>
-            <div class="glass rounded-full px-4 py-2 flex items-center gap-3 w-max">
+            <div class="flex items-center gap-3 flex-wrap">
+                <div class="glass rounded-full px-2 py-1.5 flex items-center gap-1 w-max">
+                    <button id="langHiBtn" onclick="setLanguage('hi')" class="rounded-full px-3 py-1 text-xs md:text-sm font-semibold bg-orange-700 text-white">HI</button>
+                    <button id="langEnBtn" onclick="setLanguage('en')" class="rounded-full px-3 py-1 text-xs md:text-sm font-semibold text-slate-700">EN</button>
+                </div>
+                <div class="glass rounded-full px-4 py-2 flex items-center gap-3 w-max">
                 <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
-                <span class="text-sm md:text-base">Zero-Data Browser Workflow</span>
+                <span id="workflowText" class="text-sm md:text-base">Zero-Data Browser Workflow</span>
+                </div>
             </div>
         </div>
     </header>
@@ -101,8 +107,8 @@
         <section id="home" class="route-section show max-w-6xl mx-auto space-y-8">
             <div class="glass rounded-3xl p-6 md:p-10 shadow-xl">
                 <p class="mono text-xs md:text-sm text-slate-700 mb-2">Execution Blueprint Activated</p>
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Fast legal response for scam victims + trust engine for Nexus ecosystem</h2>
-                <p class="text-slate-700 text-base md:text-lg max-w-4xl">
+                <h2 id="heroHeading" class="text-3xl md:text-5xl font-bold mb-4">Fast legal response for scam victims + trust engine for Nexus ecosystem</h2>
+                <p id="heroCopy" class="text-slate-700 text-base md:text-lg max-w-4xl">
                     Is helpdesk ka design ultra-light hai: no login, no backend dependency, no victim data storage. User apna incident choose karta hai, decision tree follow karta hai, aur browser me hi police evidence aur RBI complaint draft PDF generate karta hai.
                 </p>
                 <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
@@ -116,23 +122,23 @@
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                 <button onclick="navigate('engine')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
                     <p class="mono text-xs text-orange-700 mb-1">Phase 1</p>
-                    <h3 class="text-xl font-bold">Zero-Data Engine</h3>
-                    <p class="text-sm text-slate-700 mt-2">Decision tree + PDF artifacts + nodal directory.</p>
+                    <h3 id="phase1Title" class="text-xl font-bold">Zero-Data Engine</h3>
+                    <p id="phase1Copy" class="text-sm text-slate-700 mt-2">Decision tree + PDF artifacts + nodal directory.</p>
                 </button>
                 <button onclick="navigate('legal')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
                     <p class="mono text-xs text-orange-700 mb-1">Phase 2</p>
-                    <h3 class="text-xl font-bold">Legal Brahmastra</h3>
-                    <p class="text-sm text-slate-700 mt-2">RBI liability logic + operational SOP playbooks.</p>
+                    <h3 id="phase2Title" class="text-xl font-bold">Legal Brahmastra</h3>
+                    <p id="phase2Copy" class="text-sm text-slate-700 mt-2">RBI liability logic + operational SOP playbooks.</p>
                 </button>
                 <button onclick="navigate('distribution')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
                     <p class="mono text-xs text-orange-700 mb-1">Phase 3</p>
-                    <h3 class="text-xl font-bold">Launch Funnel</h3>
-                    <p class="text-sm text-slate-700 mt-2">YouTube traffic + hyper-local volunteer pilot.</p>
+                    <h3 id="phase3Title" class="text-xl font-bold">Launch Funnel</h3>
+                    <p id="phase3Copy" class="text-sm text-slate-700 mt-2">YouTube traffic + hyper-local volunteer pilot.</p>
                 </button>
                 <button onclick="navigate('ecosystem')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
                     <p class="mono text-xs text-orange-700 mb-1">Phase 4</p>
-                    <h3 class="text-xl font-bold">Business Link</h3>
-                    <p class="text-sm text-slate-700 mt-2">Social trust to academy leads and Sentinel deals.</p>
+                    <h3 id="phase4Title" class="text-xl font-bold">Business Link</h3>
+                    <p id="phase4Copy" class="text-sm text-slate-700 mt-2">Social trust to academy leads and Sentinel deals.</p>
                 </button>
             </div>
         </section>
@@ -142,41 +148,41 @@
 
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
                 <article class="xl:col-span-2 glass rounded-3xl p-6 md:p-8">
-                    <h2 class="text-3xl font-bold">Financial Fraud Decision Tree</h2>
-                    <p class="text-slate-700 mt-2 mb-6">Fill minimal details. Data sirf current session me use hota hai PDF banane ke liye.</p>
+                    <h2 id="engineHeading" class="text-3xl font-bold">Financial Fraud Decision Tree</h2>
+                    <p id="engineCopy" class="text-slate-700 mt-2 mb-6">Fill minimal details. Data sirf current session me use hota hai PDF banane ke liye.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <label class="text-sm">Victim Name
+                        <label id="labelVictimName" class="text-sm">Victim Name
                             <input id="victimName" type="text" placeholder="e.g. Riya Sharma" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2" />
                         </label>
-                        <label class="text-sm">Bank
+                        <label id="labelBank" class="text-sm">Bank
                             <select id="bankSelect" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2"></select>
                         </label>
-                        <label class="text-sm">Fraud Amount (INR)
+                        <label id="labelAmount" class="text-sm">Fraud Amount (INR)
                             <input id="amount" type="number" min="0" placeholder="e.g. 48000" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2" />
                         </label>
-                        <label class="text-sm">Incident Time
+                        <label id="labelIncidentTime" class="text-sm">Incident Time
                             <input id="incidentTime" type="datetime-local" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2" />
                         </label>
                     </div>
 
                     <div class="mt-5 rounded-2xl border border-orange-200 bg-orange-50 p-4">
-                        <p class="mono text-xs text-orange-700">Decision Output</p>
+                        <p id="decisionLabel" class="mono text-xs text-orange-700">Decision Output</p>
                         <p id="decisionText" class="text-orange-900 font-semibold mt-1">Incident window evaluate karne ke liye time select karein.</p>
                     </div>
 
                     <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <button onclick="evaluateDecisionTree()" class="rounded-xl bg-orange-700 text-white px-4 py-3 font-semibold hover:bg-orange-800">Evaluate & Next Action</button>
-                        <button onclick="generateEvidencePdf()" class="rounded-xl bg-slate-900 text-white px-4 py-3 font-semibold hover:bg-black">Generate Police Bundle PDF</button>
-                        <button onclick="generateRbiDraftPdf()" class="rounded-xl bg-teal-700 text-white px-4 py-3 font-semibold hover:bg-teal-800">Generate RBI Email Draft PDF</button>
+                        <button id="evalBtn" onclick="evaluateDecisionTree()" class="rounded-xl bg-orange-700 text-white px-4 py-3 font-semibold hover:bg-orange-800">Evaluate & Next Action</button>
+                        <button id="evidenceBtn" onclick="generateEvidencePdf()" class="rounded-xl bg-slate-900 text-white px-4 py-3 font-semibold hover:bg-black">Generate Police Bundle PDF</button>
+                        <button id="rbiBtn" onclick="generateRbiDraftPdf()" class="rounded-xl bg-teal-700 text-white px-4 py-3 font-semibold hover:bg-teal-800">Generate RBI Email Draft PDF</button>
                     </div>
                 </article>
 
                 <aside class="glass rounded-3xl p-6">
                     <p class="mono text-xs text-slate-600">Preloaded Directory</p>
-                    <h3 class="text-xl font-bold mb-3">Top Bank Escalation Channels</h3>
+                    <h3 id="directoryTitle" class="text-xl font-bold mb-3">Top Bank Escalation Channels</h3>
                     <ul id="bankDirectory" class="space-y-2 text-sm"></ul>
-                    <p class="text-xs text-slate-600 mt-4">Before filing, verify contact on official bank site for latest compliance updates.</p>
+                    <p id="directoryNote" class="text-xs text-slate-600 mt-4">Before filing, verify contact on official bank site for latest compliance updates.</p>
                 </aside>
             </div>
         </section>
@@ -276,19 +282,76 @@
 
     <script>
         const BANKS = [
-            { name: 'State Bank of India (SBI)', email: 'customercare@sbi.co.in' },
-            { name: 'HDFC Bank', email: 'support@hdfcbank.com' },
-            { name: 'ICICI Bank', email: 'customer.care@icicibank.com' },
-            { name: 'Punjab National Bank (PNB)', email: 'care@pnb.co.in' },
-            { name: 'Axis Bank', email: 'customer.service@axisbank.com' },
-            { name: 'Kotak Mahindra Bank', email: 'service.bank@kotak.com' },
-            { name: 'Bank of Baroda', email: 'customerservice@bankofbaroda.com' },
-            { name: 'Canara Bank', email: 'hodcustomercc@canarabank.com' },
-            { name: 'Union Bank of India', email: 'customercare@unionbankofindia.bank' },
-            { name: 'IndusInd Bank', email: 'reachus@indusind.com' },
-            { name: 'IDFC FIRST Bank', email: 'banker@idfcfirstbank.com' },
-            { name: 'Yes Bank', email: 'yestouch@yesbank.in' }
+            { name: 'State Bank of India (SBI)', email: 'customercare@sbi.co.in', nodalPage: 'https://sbi.co.in/web/customer-care/contact-us', lastVerified: '2026-04-22' },
+            { name: 'HDFC Bank', email: 'support@hdfcbank.com', nodalPage: 'https://www.hdfcbank.com/personal/need-help/customer-care', lastVerified: '2026-04-22' },
+            { name: 'ICICI Bank', email: 'customer.care@icicibank.com', nodalPage: 'https://www.icicibank.com/customer-care', lastVerified: '2026-04-22' },
+            { name: 'Punjab National Bank (PNB)', email: 'care@pnb.co.in', nodalPage: 'https://www.pnbindia.in/customer-care.html', lastVerified: '2026-04-22' },
+            { name: 'Axis Bank', email: 'customer.service@axisbank.com', nodalPage: 'https://www.axisbank.com/support', lastVerified: '2026-04-22' },
+            { name: 'Kotak Mahindra Bank', email: 'service.bank@kotak.com', nodalPage: 'https://www.kotak.com/en/customer-service.html', lastVerified: '2026-04-22' },
+            { name: 'Bank of Baroda', email: 'customerservice@bankofbaroda.com', nodalPage: 'https://www.bankofbaroda.in/customer-care', lastVerified: '2026-04-22' },
+            { name: 'Canara Bank', email: 'hodcustomercc@canarabank.com', nodalPage: 'https://canarabank.com/Customer-Care', lastVerified: '2026-04-22' },
+            { name: 'Union Bank of India', email: 'customercare@unionbankofindia.bank', nodalPage: 'https://www.unionbankofindia.co.in/english/customer-care.aspx', lastVerified: '2026-04-22' },
+            { name: 'IndusInd Bank', email: 'reachus@indusind.com', nodalPage: 'https://www.indusind.com/in/en/personal/contact-us.html', lastVerified: '2026-04-22' },
+            { name: 'IDFC FIRST Bank', email: 'banker@idfcfirstbank.com', nodalPage: 'https://www.idfcfirstbank.com/customer-care', lastVerified: '2026-04-22' },
+            { name: 'Yes Bank', email: 'yestouch@yesbank.in', nodalPage: 'https://www.yesbank.in/help-support', lastVerified: '2026-04-22' }
         ];
+
+        const I18N = {
+            hi: {
+                titleText: 'Cyber Fraud Emergency Helpdesk',
+                workflowText: 'Zero-Data Browser Workflow',
+                heroHeading: 'Scam victims ke liye fast legal response + Nexus ecosystem trust engine',
+                heroCopy: 'Yeh helpdesk ultra-light hai: no login, no backend dependency, no victim data storage. User incident choose karta hai, decision tree follow karta hai, aur browser me hi police evidence aur RBI complaint draft PDF generate hota hai.',
+                phase1Title: 'Zero-Data Engine',
+                phase1Copy: 'Decision tree + PDF artifacts + nodal directory.',
+                phase2Title: 'Legal Brahmastra',
+                phase2Copy: 'RBI liability logic + actionable SOP playbooks.',
+                phase3Title: 'Launch Funnel',
+                phase3Copy: 'YouTube traffic + hyper-local volunteer pilot.',
+                phase4Title: 'Business Link',
+                phase4Copy: 'Social trust se academy leads aur Sentinel deals.',
+                engineHeading: 'Financial Fraud Decision Tree',
+                engineCopy: 'Minimal details bharo. Data sirf current session me PDF generation ke liye use hota hai.',
+                labelVictimName: 'Victim Name',
+                labelBank: 'Bank',
+                labelAmount: 'Fraud Amount (INR)',
+                labelIncidentTime: 'Incident Time',
+                decisionLabel: 'Decision Output',
+                evalBtn: 'Evaluate & Next Action',
+                evidenceBtn: 'Generate Police Bundle PDF',
+                rbiBtn: 'Generate RBI Email Draft PDF',
+                directoryTitle: 'Compliance Directory (Bank Escalation)',
+                directoryNote: 'Har complaint se pehle official bank page par contact verify karein. Metadata me last reviewed date di hui hai.'
+            },
+            en: {
+                titleText: 'Cyber Fraud Emergency Helpdesk',
+                workflowText: 'Zero-Data Browser Workflow',
+                heroHeading: 'Fast legal response for scam victims + trust engine for Nexus ecosystem',
+                heroCopy: 'This helpdesk is ultra-light: no login, no backend dependency, no victim data storage. The user selects an incident, follows the decision tree, and generates police evidence plus RBI complaint draft PDFs directly in the browser.',
+                phase1Title: 'Zero-Data Engine',
+                phase1Copy: 'Decision tree + PDF artifacts + nodal directory.',
+                phase2Title: 'Legal Brahmastra',
+                phase2Copy: 'RBI liability logic + operational SOP playbooks.',
+                phase3Title: 'Launch Funnel',
+                phase3Copy: 'YouTube traffic + hyper-local volunteer pilot.',
+                phase4Title: 'Business Link',
+                phase4Copy: 'Social trust to academy leads and Sentinel deals.',
+                engineHeading: 'Financial Fraud Decision Tree',
+                engineCopy: 'Fill minimal details. Data is used only in-session for PDF generation.',
+                labelVictimName: 'Victim Name',
+                labelBank: 'Bank',
+                labelAmount: 'Fraud Amount (INR)',
+                labelIncidentTime: 'Incident Time',
+                decisionLabel: 'Decision Output',
+                evalBtn: 'Evaluate & Next Action',
+                evidenceBtn: 'Generate Police Bundle PDF',
+                rbiBtn: 'Generate RBI Email Draft PDF',
+                directoryTitle: 'Compliance Directory (Bank Escalation)',
+                directoryNote: 'Before filing, verify contact details on the official bank page. Metadata includes last review date.'
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('nexusLang') || 'hi';
 
         function navigate(routeName) {
             const sections = document.querySelectorAll('.route-section');
@@ -316,7 +379,9 @@
             const incidentValue = incidentTimeField.value;
 
             if (!incidentValue) {
-                decisionText.textContent = 'Please select incident time first. Priority rule: first call 1930, then bank block request.';
+                decisionText.textContent = currentLanguage === 'hi'
+                    ? 'Pehle incident time select karein. Priority rule: sabse pehle 1930 call, phir bank block request.'
+                    : 'Please select incident time first. Priority rule: first call 1930, then bank block request.';
                 return;
             }
 
@@ -325,9 +390,13 @@
             const roundedGap = Math.max(0, hoursGap).toFixed(1);
 
             if (hoursGap <= 2) {
-                decisionText.textContent = `Under 2 hours (${roundedGap}h): call 1930 now, ask bank for immediate debit freeze, mention RBI zero liability reporting window.`;
+                decisionText.textContent = currentLanguage === 'hi'
+                    ? `2 ghante ke andar (${roundedGap}h): abhi 1930 par call karein, bank ko immediate debit freeze bolen, RBI zero-liability reporting window mention karein.`
+                    : `Under 2 hours (${roundedGap}h): call 1930 now, ask bank for immediate debit freeze, mention RBI zero liability reporting window.`;
             } else {
-                decisionText.textContent = `Over 2 hours (${roundedGap}h): still file 1930 + cybercrime report immediately, escalate to bank nodal officer with written complaint and evidence trail.`;
+                decisionText.textContent = currentLanguage === 'hi'
+                    ? `2 ghante se zyada (${roundedGap}h): phir bhi turant 1930 + cybercrime report file karein, aur bank nodal officer ko written complaint + evidence trail ke saath escalate karein.`
+                    : `Over 2 hours (${roundedGap}h): still file 1930 + cybercrime report immediately, escalate to bank nodal officer with written complaint and evidence trail.`;
             }
         }
 
@@ -350,25 +419,33 @@
             }
 
             const doc = new jspdf.jsPDF();
-            doc.setFontSize(16);
-            doc.text('Nexus Helpdesk - Police Evidence Bundle', 14, 18);
-            doc.setFontSize(11);
-            const lines = [
+            let y = 16;
+            doc.setFontSize(14);
+            doc.text('Nexus Helpdesk - Police Evidence Bundle', 14, y);
+            y += 8;
+
+            doc.setFontSize(10.5);
+            const summaryLines = [
                 `Victim Name: ${payload.victimName}`,
                 `Bank: ${payload.bank}`,
                 `Fraud Amount (INR): ${payload.amount}`,
                 `Incident Time: ${payload.incidentTime}`,
-                `Decision Tree Output: ${payload.decision}`,
                 `Generated At: ${payload.generatedAt}`,
-                '',
-                'Checklist:',
-                '1. 1930 complaint acknowledgement number',
-                '2. Fraud transaction screenshots and SMS alerts',
-                '3. Bank statement lines for disputed debit',
-                '4. Cybercrime portal complaint ID',
-                '5. FIR/CSR number from police station'
+                `Decision Tree Output: ${payload.decision}`
             ];
-            doc.text(lines, 14, 30);
+
+            summaryLines.forEach((line) => {
+                const wrapped = doc.splitTextToSize(line, 180);
+                doc.text(wrapped, 14, y);
+                y += wrapped.length * 5;
+            });
+
+            y += 3;
+            doc.setFontSize(11);
+            doc.text('FIR Annexure Table (Attach with complaint):', 14, y);
+            y += 4;
+
+            drawAnnexureTable(doc, y, payload);
             doc.save('nexus-police-evidence-bundle.pdf');
         }
 
@@ -397,6 +474,7 @@
                 '',
                 `Current action trail: ${payload.decision}`,
                 'Attached evidence: screenshots, transaction references, complaint IDs.',
+                'Annexure IDs: A1(1930), A2(Transaction), A3(SMS), A4(Cyber Portal), A5(Bank Complaint), A6(FIR/CSR).',
                 '',
                 'Regards,',
                 payload.victimName
@@ -408,6 +486,60 @@
         function findBankEmail(bankName) {
             const record = BANKS.find((bank) => bank.name === bankName);
             return record ? record.email : 'official bank grievance email';
+        }
+
+        function drawAnnexureTable(doc, startY, payload) {
+            const left = 14;
+            const col1 = 26;
+            const col2 = 88;
+            const col3 = 58;
+            const rowH = 8;
+            const rows = [
+                ['ID', 'Document / Proof', 'Reference / Notes'],
+                ['A1', '1930 Helpline Ack', 'Complaint ID: __________'],
+                ['A2', 'Fraud Transaction', `Amount INR ${payload.amount}`],
+                ['A3', 'Bank SMS / Alerts', 'Time-stamped screenshots'],
+                ['A4', 'Cybercrime Portal', 'Complaint No: __________'],
+                ['A5', 'Bank Written Complaint', 'Branch stamp / email copy'],
+                ['A6', 'FIR / CSR', 'Police station + diary no.']
+            ];
+
+            let y = startY;
+            rows.forEach((row, idx) => {
+                doc.rect(left, y, col1, rowH);
+                doc.rect(left + col1, y, col2, rowH);
+                doc.rect(left + col1 + col2, y, col3, rowH);
+
+                doc.setFontSize(idx === 0 ? 10.5 : 10);
+                doc.text(String(row[0]), left + 2, y + 5.3);
+                doc.text(String(row[1]), left + col1 + 2, y + 5.3);
+                doc.text(String(row[2]), left + col1 + col2 + 2, y + 5.3);
+                y += rowH;
+            });
+        }
+
+        function applyLanguage() {
+            const langPack = I18N[currentLanguage] || I18N.hi;
+            Object.keys(langPack).forEach((key) => {
+                const node = document.getElementById(key);
+                if (node) {
+                    node.textContent = langPack[key];
+                }
+            });
+
+            document.documentElement.lang = currentLanguage === 'hi' ? 'hi' : 'en';
+            document.getElementById('langHiBtn').className = currentLanguage === 'hi'
+                ? 'rounded-full px-3 py-1 text-xs md:text-sm font-semibold bg-orange-700 text-white'
+                : 'rounded-full px-3 py-1 text-xs md:text-sm font-semibold text-slate-700';
+            document.getElementById('langEnBtn').className = currentLanguage === 'en'
+                ? 'rounded-full px-3 py-1 text-xs md:text-sm font-semibold bg-orange-700 text-white'
+                : 'rounded-full px-3 py-1 text-xs md:text-sm font-semibold text-slate-700';
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('nexusLang', currentLanguage);
+            applyLanguage();
         }
 
         function seedBankData() {
@@ -422,7 +554,12 @@
 
                 const listItem = document.createElement('li');
                 listItem.className = 'rounded-xl border border-slate-200 bg-white/80 p-2';
-                listItem.innerHTML = `<p class="font-semibold">${bank.name}</p><p class="mono text-xs text-slate-600">${bank.email}</p>`;
+                listItem.innerHTML = `
+                    <p class="font-semibold">${bank.name}</p>
+                    <p class="mono text-xs text-slate-600">${bank.email}</p>
+                    <a href="${bank.nodalPage}" target="_blank" rel="noreferrer" class="text-xs text-sky-700 underline break-all">Official escalation page</a>
+                    <p class="mono text-[10px] text-slate-500 mt-1">last-reviewed ${bank.lastVerified}</p>
+                `;
                 directory.appendChild(listItem);
             });
         }
@@ -439,6 +576,7 @@
 
         seedBankData();
         bootFromQuery();
+        applyLanguage();
     </script>
 </body>
 </html>
