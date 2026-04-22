@@ -3,79 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Helpdesk | Cyber Emergency Response</title>
+    <title>Nexus Helpdesk | Zero-Data Cyber Emergency</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        /* Custom animation for the Live Scam Tracker */
-        .marquee {
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+        :root {
+            --ink: #101828;
+            --sand: #f5f2ea;
+            --ember: #c2410c;
+            --mint: #047857;
+            --ocean: #0f4c81;
+            --card: rgba(255, 255, 255, 0.78);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(194, 65, 12, 0.14), transparent 35%),
+                radial-gradient(circle at 90% 0%, rgba(15, 76, 129, 0.16), transparent 40%),
+                linear-gradient(135deg, #fef9f5 0%, #edf4f9 55%, #f7f4eb 100%);
+            min-height: 100vh;
+        }
+
+        .ticker {
             overflow: hidden;
             white-space: nowrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+            background: linear-gradient(90deg, #7f1d1d, #b91c1c, #7f1d1d);
         }
-        .marquee-content {
+
+        .ticker-content {
             display: inline-block;
-            animation: marquee 15s linear infinite;
+            padding: 0.65rem 0;
+            animation: ticker 22s linear infinite;
+            color: #fff;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.01em;
         }
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+
+        @keyframes ticker {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .glass {
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+        }
+
+        .route-section {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .route-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mono {
+            font-family: 'IBM Plex Mono', monospace;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-
-    <div class="bg-red-600 text-white px-4 py-2 text-sm font-semibold marquee">
-        <div class="marquee-content">
-            ⚠️ LIVE ALERT: Ayushman Card KYC scam aur 5G Upgrade OTP frauds tezi se badh rahe hain. Kisi bhi anjaan link par click na karein. ⚠️
-        </div>
+<body>
+    <div class="ticker">
+        <p class="ticker-content">
+            ALERT FEED :: Ayushman KYC phishing, fake 5G SIM upgrade calls, UPI collect-request fraud spikes reported this week. Never share OTP, UPI PIN, screen-share access.
+        </p>
     </div>
 
-    <header class="bg-white shadow-sm border-b border-gray-200">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-900">
-                <span class="text-blue-600">Nexus</span> Helpdesk
-            </h1>
-            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">
-                Zero-Data Policy
-            </span>
+    <header class="px-4 py-4 md:py-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <button class="text-left" onclick="goHome()">
+                <p class="text-sm tracking-[0.2em] uppercase text-orange-700 mono">Nexus Cyberdesk</p>
+                <h1 class="text-2xl md:text-4xl font-bold leading-tight">Emergency Fraud Helpdesk</h1>
+            </button>
+            <div class="glass rounded-full px-4 py-2 flex items-center gap-3 w-max">
+                <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span class="text-sm md:text-base">Zero-Data Browser Workflow</span>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-10">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-                Cyber Fraud Emergency Portal
-            </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Ghabrayein nahi. Apna incident select karein aur turant RBI guidelines aur police support ke sath step-by-step action plan paayein.
-            </p>
-        </div>
+    <main class="px-4 pb-14">
+        <section id="home" class="route-section show max-w-6xl mx-auto space-y-8">
+            <div class="glass rounded-3xl p-6 md:p-10 shadow-xl">
+                <p class="mono text-xs md:text-sm text-slate-700 mb-2">Execution Blueprint Activated</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Fast legal response for scam victims + trust engine for Nexus ecosystem</h2>
+                <p class="text-slate-700 text-base md:text-lg max-w-4xl">
+                    Is helpdesk ka design ultra-light hai: no login, no backend dependency, no victim data storage. User apna incident choose karta hai, decision tree follow karta hai, aur browser me hi police evidence aur RBI complaint draft PDF generate karta hai.
+                </p>
+                <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                    <div class="rounded-xl bg-white/80 p-3 border border-orange-200"><span class="mono">Stack:</span> HTML + Tailwind + JS</div>
+                    <div class="rounded-xl bg-white/80 p-3 border border-orange-200"><span class="mono">Store:</span> Zero Data</div>
+                    <div class="rounded-xl bg-white/80 p-3 border border-orange-200"><span class="mono">Generate:</span> jsPDF</div>
+                    <div class="rounded-xl bg-white/80 p-3 border border-orange-200"><span class="mono">Target:</span> &lt; 1s UX Path</div>
+                </div>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <button class="flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md border border-gray-200 hover:border-red-500 hover:shadow-lg transition-all group">
-                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">💸</div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Mera Paisa Kat Gaya</h3>
-                <p class="text-sm text-gray-500 text-center">Bank Fraud, UPI Scam, Fake OTP Bank Liability</p>
-            </button>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                <button onclick="navigate('engine')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
+                    <p class="mono text-xs text-orange-700 mb-1">Phase 1</p>
+                    <h3 class="text-xl font-bold">Zero-Data Engine</h3>
+                    <p class="text-sm text-slate-700 mt-2">Decision tree + PDF artifacts + nodal directory.</p>
+                </button>
+                <button onclick="navigate('legal')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
+                    <p class="mono text-xs text-orange-700 mb-1">Phase 2</p>
+                    <h3 class="text-xl font-bold">Legal Brahmastra</h3>
+                    <p class="text-sm text-slate-700 mt-2">RBI liability logic + operational SOP playbooks.</p>
+                </button>
+                <button onclick="navigate('distribution')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
+                    <p class="mono text-xs text-orange-700 mb-1">Phase 3</p>
+                    <h3 class="text-xl font-bold">Launch Funnel</h3>
+                    <p class="text-sm text-slate-700 mt-2">YouTube traffic + hyper-local volunteer pilot.</p>
+                </button>
+                <button onclick="navigate('ecosystem')" class="glass rounded-2xl p-6 text-left hover:scale-[1.01] transition-transform">
+                    <p class="mono text-xs text-orange-700 mb-1">Phase 4</p>
+                    <h3 class="text-xl font-bold">Business Link</h3>
+                    <p class="text-sm text-slate-700 mt-2">Social trust to academy leads and Sentinel deals.</p>
+                </button>
+            </div>
+        </section>
 
-            <button class="flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md border border-gray-200 hover:border-green-500 hover:shadow-lg transition-all group">
-                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">📱</div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Account Hack Hua</h3>
-                <p class="text-sm text-gray-500 text-center">WhatsApp, Instagram, Social Media Hijack</p>
-            </button>
+        <section id="engine" class="route-section hidden max-w-6xl mx-auto space-y-6">
+            <button onclick="goHome()" class="mono text-sm text-orange-800 underline">&larr; Back to Dashboard</button>
 
-            <button class="flex flex-col items-center justify-center p-8 bg-blue-50 rounded-xl shadow-md border border-blue-200 hover:border-blue-500 hover:shadow-lg transition-all group">
-                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🛡️</div>
-                <h3 class="text-xl font-bold text-blue-900 mb-2">Cyber Volunteer</h3>
-                <p class="text-sm text-blue-700 text-center">10-Minute Family Defense Training & Certificate</p>
-            </button>
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                <article class="xl:col-span-2 glass rounded-3xl p-6 md:p-8">
+                    <h2 class="text-3xl font-bold">Financial Fraud Decision Tree</h2>
+                    <p class="text-slate-700 mt-2 mb-6">Fill minimal details. Data sirf current session me use hota hai PDF banane ke liye.</p>
 
-        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="text-sm">Victim Name
+                            <input id="victimName" type="text" placeholder="e.g. Riya Sharma" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2" />
+                        </label>
+                        <label class="text-sm">Bank
+                            <select id="bankSelect" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2"></select>
+                        </label>
+                        <label class="text-sm">Fraud Amount (INR)
+                            <input id="amount" type="number" min="0" placeholder="e.g. 48000" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2" />
+                        </label>
+                        <label class="text-sm">Incident Time
+                            <input id="incidentTime" type="datetime-local" class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2" />
+                        </label>
+                    </div>
 
-        <div class="mt-12 text-center text-sm text-gray-500">
-            <p>🔒 Hum aapka koi bhi personal data, bank account, ya passwords save nahi karte.</p>
-        </div>
+                    <div class="mt-5 rounded-2xl border border-orange-200 bg-orange-50 p-4">
+                        <p class="mono text-xs text-orange-700">Decision Output</p>
+                        <p id="decisionText" class="text-orange-900 font-semibold mt-1">Incident window evaluate karne ke liye time select karein.</p>
+                    </div>
+
+                    <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button onclick="evaluateDecisionTree()" class="rounded-xl bg-orange-700 text-white px-4 py-3 font-semibold hover:bg-orange-800">Evaluate & Next Action</button>
+                        <button onclick="generateEvidencePdf()" class="rounded-xl bg-slate-900 text-white px-4 py-3 font-semibold hover:bg-black">Generate Police Bundle PDF</button>
+                        <button onclick="generateRbiDraftPdf()" class="rounded-xl bg-teal-700 text-white px-4 py-3 font-semibold hover:bg-teal-800">Generate RBI Email Draft PDF</button>
+                    </div>
+                </article>
+
+                <aside class="glass rounded-3xl p-6">
+                    <p class="mono text-xs text-slate-600">Preloaded Directory</p>
+                    <h3 class="text-xl font-bold mb-3">Top Bank Escalation Channels</h3>
+                    <ul id="bankDirectory" class="space-y-2 text-sm"></ul>
+                    <p class="text-xs text-slate-600 mt-4">Before filing, verify contact on official bank site for latest compliance updates.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section id="legal" class="route-section hidden max-w-6xl mx-auto space-y-6">
+            <button onclick="goHome()" class="mono text-sm text-orange-800 underline">&larr; Back to Dashboard</button>
+            <div class="glass rounded-3xl p-6 md:p-8">
+                <p class="mono text-xs text-slate-600">Phase 2 Research Block</p>
+                <h2 class="text-3xl font-bold">RBI Circular Simplified (DBR.No.Leg.BC.78/09.07.005/2017-18)</h2>
+                <div class="grid md:grid-cols-2 gap-4 mt-5 text-sm">
+                    <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <h3 class="font-bold text-emerald-900">If customer reports quickly</h3>
+                        <p class="mt-1 text-emerald-800">Agar customer ne unauthorized transaction turant report kiya, liability zero ya very limited ho sakti hai.</p>
+                    </div>
+                    <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <h3 class="font-bold text-emerald-900">Delay increases liability</h3>
+                        <p class="mt-1 text-emerald-800">Report delay hone par customer ki liability account type aur policy rules ke hisab se badh sakti hai.</p>
+                    </div>
+                    <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <h3 class="font-bold text-emerald-900">Bank must reverse in timeline</h3>
+                        <p class="mt-1 text-emerald-800">Regulatory expectation hai ki valid complaints ka credit reversal defined turnaround time me ho.</p>
+                    </div>
+                    <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <h3 class="font-bold text-emerald-900">Always keep proof trail</h3>
+                        <p class="mt-1 text-emerald-800">SMS, screenshots, complaint IDs, 1930 report, FIR/CSR details safe rakho. Ye recovery speed badhata hai.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <article class="glass rounded-2xl p-5">
+                    <h3 class="font-bold text-lg">UPI Fraud SOP</h3>
+                    <ol class="mt-3 space-y-2 text-sm list-decimal list-inside">
+                        <li>Bank app kholo and UPI disable ya block option tap karo.</li>
+                        <li>1930 call karke transaction IDs bolo aur complaint ID note karo.</li>
+                        <li>Cybercrime portal complaint submit karo with screenshots.</li>
+                        <li>Branch visit karke written dispute form submit karo.</li>
+                    </ol>
+                </article>
+                <article class="glass rounded-2xl p-5">
+                    <h3 class="font-bold text-lg">WhatsApp Hijack SOP</h3>
+                    <ol class="mt-3 space-y-2 text-sm list-decimal list-inside">
+                        <li>Turant contacts ko normal call karke alert kar do.</li>
+                        <li>WhatsApp me re-register with phone number and OTP.</li>
+                        <li>"Lost/Stolen" support email trigger karo with number format.</li>
+                        <li>2-step verification PIN set karo and linked devices logout.</li>
+                    </ol>
+                </article>
+                <article class="glass rounded-2xl p-5">
+                    <h3 class="font-bold text-lg">Instagram Recovery SOP</h3>
+                    <ol class="mt-3 space-y-2 text-sm list-decimal list-inside">
+                        <li>Login help page par "My account was hacked" select karo.</li>
+                        <li>Video selfie or identity verification prompt complete karo.</li>
+                        <li>Old recovery email/number ko restore request bhejo.</li>
+                        <li>Recovery ke baad password + 2FA app enable karo.</li>
+                    </ol>
+                </article>
+            </div>
+        </section>
+
+        <section id="distribution" class="route-section hidden max-w-6xl mx-auto space-y-6">
+            <button onclick="goHome()" class="mono text-sm text-orange-800 underline">&larr; Back to Dashboard</button>
+            <div class="glass rounded-3xl p-6 md:p-8">
+                <p class="mono text-xs text-slate-600">Phase 3 Go-To-Market</p>
+                <h2 class="text-3xl font-bold">YouTube Funnel + Hyper-Local Pilot</h2>
+                <div class="grid md:grid-cols-2 gap-5 mt-4">
+                    <div class="rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                        <h3 class="font-bold text-sky-900">The Ultimate Cybersecurity Course Channel</h3>
+                        <p class="text-sm text-sky-800 mt-2">Live scam breakdown shorts publish karo: Ayushman, SIM swap, fake KYC. Har video me pinned CTA: "Agar aap victim ho, helpdesk se legal PDF turant nikalo".</p>
+                    </div>
+                    <div class="rounded-2xl border border-sky-200 bg-sky-50 p-4">
+                        <h3 class="font-bold text-sky-900">Delhi/Noida Volunteer Pilot</h3>
+                        <p class="text-sm text-sky-800 mt-2">College seminars aur GDG meetups me live demo. Batch-1 volunteers ko family defense script do, weekly reporting template ke saath.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem" class="route-section hidden max-w-6xl mx-auto space-y-6">
+            <button onclick="goHome()" class="mono text-sm text-orange-800 underline">&larr; Back to Dashboard</button>
+            <div class="glass rounded-3xl p-6 md:p-8">
+                <p class="mono text-xs text-slate-600">Phase 4 Monetization Bridge</p>
+                <h2 class="text-3xl font-bold">Social Impact to Business Flywheel</h2>
+                <div class="grid md:grid-cols-2 gap-5 mt-4">
+                    <div class="rounded-2xl bg-white/80 border border-amber-200 p-5">
+                        <h3 class="text-xl font-bold text-amber-900">Upsell Path</h3>
+                        <p class="text-sm text-amber-900 mt-2">Volunteer module complete hone par CTA: "Cybersecurity career banana hai? Join Nexus Academy" with tracks: networking, ethical hacking, C/C++ foundations.</p>
+                    </div>
+                    <div class="rounded-2xl bg-white/80 border border-amber-200 p-5">
+                        <h3 class="text-xl font-bold text-amber-900">Trust as Currency</h3>
+                        <p class="text-sm text-amber-900 mt-2">Schools aur colleges me free helpdesk se trust build karo, then same institutions ko Nexus Sentinel enterprise firewall proof-of-concept offer karo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <script>
+        const BANKS = [
+            { name: 'State Bank of India (SBI)', email: 'customercare@sbi.co.in' },
+            { name: 'HDFC Bank', email: 'support@hdfcbank.com' },
+            { name: 'ICICI Bank', email: 'customer.care@icicibank.com' },
+            { name: 'Punjab National Bank (PNB)', email: 'care@pnb.co.in' },
+            { name: 'Axis Bank', email: 'customer.service@axisbank.com' },
+            { name: 'Kotak Mahindra Bank', email: 'service.bank@kotak.com' },
+            { name: 'Bank of Baroda', email: 'customerservice@bankofbaroda.com' },
+            { name: 'Canara Bank', email: 'hodcustomercc@canarabank.com' },
+            { name: 'Union Bank of India', email: 'customercare@unionbankofindia.bank' },
+            { name: 'IndusInd Bank', email: 'reachus@indusind.com' },
+            { name: 'IDFC FIRST Bank', email: 'banker@idfcfirstbank.com' },
+            { name: 'Yes Bank', email: 'yestouch@yesbank.in' }
+        ];
+
+        function navigate(routeName) {
+            const sections = document.querySelectorAll('.route-section');
+            sections.forEach((section) => {
+                section.classList.add('hidden');
+                section.classList.remove('show');
+            });
+
+            const target = document.getElementById(routeName);
+            target.classList.remove('hidden');
+            requestAnimationFrame(() => target.classList.add('show'));
+
+            const url = new URL(window.location.href);
+            url.searchParams.set('view', routeName);
+            window.history.replaceState({}, '', url);
+        }
+
+        function goHome() {
+            navigate('home');
+        }
+
+        function evaluateDecisionTree() {
+            const incidentTimeField = document.getElementById('incidentTime');
+            const decisionText = document.getElementById('decisionText');
+            const incidentValue = incidentTimeField.value;
+
+            if (!incidentValue) {
+                decisionText.textContent = 'Please select incident time first. Priority rule: first call 1930, then bank block request.';
+                return;
+            }
+
+            const incidentDate = new Date(incidentValue);
+            const hoursGap = (Date.now() - incidentDate.getTime()) / (1000 * 60 * 60);
+            const roundedGap = Math.max(0, hoursGap).toFixed(1);
+
+            if (hoursGap <= 2) {
+                decisionText.textContent = `Under 2 hours (${roundedGap}h): call 1930 now, ask bank for immediate debit freeze, mention RBI zero liability reporting window.`;
+            } else {
+                decisionText.textContent = `Over 2 hours (${roundedGap}h): still file 1930 + cybercrime report immediately, escalate to bank nodal officer with written complaint and evidence trail.`;
+            }
+        }
+
+        function buildSharedPayload() {
+            const victimName = document.getElementById('victimName').value.trim() || 'Not provided';
+            const bank = document.getElementById('bankSelect').value;
+            const amount = document.getElementById('amount').value || 'Not provided';
+            const incidentTime = document.getElementById('incidentTime').value || 'Not provided';
+            const decision = document.getElementById('decisionText').textContent;
+            const generatedAt = new Date().toLocaleString();
+            return { victimName, bank, amount, incidentTime, decision, generatedAt };
+        }
+
+        function generateEvidencePdf() {
+            const payload = buildSharedPayload();
+            const jspdf = window.jspdf;
+            if (!jspdf || !jspdf.jsPDF) {
+                alert('PDF library not loaded. Please refresh once.');
+                return;
+            }
+
+            const doc = new jspdf.jsPDF();
+            doc.setFontSize(16);
+            doc.text('Nexus Helpdesk - Police Evidence Bundle', 14, 18);
+            doc.setFontSize(11);
+            const lines = [
+                `Victim Name: ${payload.victimName}`,
+                `Bank: ${payload.bank}`,
+                `Fraud Amount (INR): ${payload.amount}`,
+                `Incident Time: ${payload.incidentTime}`,
+                `Decision Tree Output: ${payload.decision}`,
+                `Generated At: ${payload.generatedAt}`,
+                '',
+                'Checklist:',
+                '1. 1930 complaint acknowledgement number',
+                '2. Fraud transaction screenshots and SMS alerts',
+                '3. Bank statement lines for disputed debit',
+                '4. Cybercrime portal complaint ID',
+                '5. FIR/CSR number from police station'
+            ];
+            doc.text(lines, 14, 30);
+            doc.save('nexus-police-evidence-bundle.pdf');
+        }
+
+        function generateRbiDraftPdf() {
+            const payload = buildSharedPayload();
+            const jspdf = window.jspdf;
+            if (!jspdf || !jspdf.jsPDF) {
+                alert('PDF library not loaded. Please refresh once.');
+                return;
+            }
+
+            const doc = new jspdf.jsPDF();
+            doc.setFontSize(15);
+            doc.text('Draft: RBI / Bank Nodal Officer Escalation Email', 14, 18);
+            doc.setFontSize(11);
+            const body = [
+                `To: ${findBankEmail(payload.bank)}`,
+                'Subject: Urgent Unauthorized Electronic Transaction - Reversal Request',
+                '',
+                'Respected Team,',
+                `I, ${payload.victimName}, report an unauthorized transaction from my account associated with ${payload.bank}.`,
+                `Fraud amount: INR ${payload.amount}. Incident time: ${payload.incidentTime}.`,
+                '',
+                'I request immediate action under RBI guidelines on limiting customer liability in unauthorized',
+                'electronic banking transactions and ask for urgent debit freeze / reversal processing.',
+                '',
+                `Current action trail: ${payload.decision}`,
+                'Attached evidence: screenshots, transaction references, complaint IDs.',
+                '',
+                'Regards,',
+                payload.victimName
+            ];
+            doc.text(body, 14, 30);
+            doc.save('nexus-rbi-bank-escalation-draft.pdf');
+        }
+
+        function findBankEmail(bankName) {
+            const record = BANKS.find((bank) => bank.name === bankName);
+            return record ? record.email : 'official bank grievance email';
+        }
+
+        function seedBankData() {
+            const select = document.getElementById('bankSelect');
+            const directory = document.getElementById('bankDirectory');
+
+            BANKS.forEach((bank) => {
+                const option = document.createElement('option');
+                option.value = bank.name;
+                option.textContent = bank.name;
+                select.appendChild(option);
+
+                const listItem = document.createElement('li');
+                listItem.className = 'rounded-xl border border-slate-200 bg-white/80 p-2';
+                listItem.innerHTML = `<p class="font-semibold">${bank.name}</p><p class="mono text-xs text-slate-600">${bank.email}</p>`;
+                directory.appendChild(listItem);
+            });
+        }
+
+        function bootFromQuery() {
+            const params = new URLSearchParams(window.location.search);
+            const view = params.get('view');
+            if (view && document.getElementById(view)) {
+                navigate(view);
+            } else {
+                navigate('home');
+            }
+        }
+
+        seedBankData();
+        bootFromQuery();
+    </script>
 </body>
 </html>
